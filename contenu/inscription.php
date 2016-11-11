@@ -46,13 +46,14 @@ if(isset($_POST['form_inscription'])) {
                                     else
                                     {
                                         header("location: profil.php?id=" .$_SESSION['id']);
+                                        /* probleme ici - si je ne suis pas deconectée avant, ça me renvoie sur le compte ou j'étais avant de creer le profil, logique ! il faut revoir cette ligne) . c'est resolu je laisse le com pour le journal de bord */
+
 
                                     }
 
-                                }  
+                                }
 
 
-                                /* probleme ici - si je ne suis pas deconectée avant, ça me renvoie sur le compte ou j'étais avant de creer le profil, logique ! il faut revoir cette ligne) */
 
 
                             } else {
