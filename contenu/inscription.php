@@ -35,7 +35,24 @@ if(isset($_POST['form_inscription'])) {
                                 $insertmbr->execute(array($nom, $prenom, $mail, $pseudo, $mdp));
 
 
-                                header("location: profil.php?id=" .$_SESSION['id']);  /* probleme ici - si je ne suis pas deconectée avant, ça me renvoie sur le compte ou j'étais avant de creer le profil, logique ! il faut revoir cette ligne) */
+                                if (isset($_SESSION['id']))
+
+                                {
+
+                                    if (!empty($_SESSION['id']))
+                                     {
+                                       $erreur = "Vous ne pouvez pas creer un compte si vous etes deja connecté";
+                                     }
+                                    else
+                                    {
+                                        header("location: profil.php?id=" .$_SESSION['id']);
+
+                                    }
+
+                                }  
+
+
+                                /* probleme ici - si je ne suis pas deconectée avant, ça me renvoie sur le compte ou j'étais avant de creer le profil, logique ! il faut revoir cette ligne) */
 
 
                             } else {
