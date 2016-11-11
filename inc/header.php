@@ -41,6 +41,8 @@ include 'config.php';
                     if (!empty($_SESSION['id']))
                     {
                         echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue'.$_SESSION['pseudo'].'</span></a></li>';
+                        echo '<li><a href=../contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
+
                     }
                     else
                     {
