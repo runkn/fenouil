@@ -1,7 +1,6 @@
 <?php
-
+include '../inc/header.php';
 session_start();
-$db = new PDO("mysql:host=localhost;dbname=grostest", 'root', 'root');
 
 
 ?>

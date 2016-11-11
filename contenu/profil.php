@@ -1,6 +1,5 @@
 <?php
 include '../inc/header.php';
-include '../inc/config.php';
 echo '<pre>';
 var_dump($_SESSION);
 echo '</pre>';
