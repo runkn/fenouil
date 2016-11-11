@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include 'config.php';
+
 ?>
 
 <DOCTYPE html>
@@ -33,11 +36,24 @@ session_start();
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
+                if (isset($_SESSION['id']))
+                {
+                    if (!empty($_SESSION['id']))
+                    {
+                        echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue'.$_SESSION['pseudo'].'</span></a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a href="../contenu/connexion.php"><span class="glyphicon glyphicon-user">Se connecter</span></a></li>';
+                    }
+                }
+                else
+                {
+                    echo '<li><a href=../contenu/connexion.php><span class="glyphicon glyphicon-log-in">Se connecter</span></a></li>';
+                    echo '<li><a href=../contenu/inscription.php><span class="glyphicon glyphicon-tree-conifer">S\'inscrire</span></a></li>';
+                }
 
                 ?>
-                <li><a href="../contenu/inscription.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-
-                <li><a href=../contenu/connexion.php><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
             </ul>
         </div>
     </nav>
