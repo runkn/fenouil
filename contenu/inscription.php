@@ -4,7 +4,7 @@ include '../inc/header.php';
 
 
 
-
+$db = new PDO('mysql:host=localhost;dbname=fenouil', 'root', 'Johanna');
 
 if(isset($_POST['form_inscription'])) {
     $nom = htmlspecialchars($_POST['nom_utilisateur']);
