@@ -2,8 +2,6 @@
 
 include '../inc/header.php';
 
-
-
 $db = new PDO('mysql:host=localhost;dbname=fenouil', 'root', 'Johanna');
 
 if(isset($_POST['form_inscription'])) {
@@ -30,14 +28,14 @@ if(isset($_POST['form_inscription'])) {
                     if($pseudoexist == 0) {
                         if($mailexist == 0) {
                             if ($mdp == $mdp2) {
-                                $insertmbr = $db->prepare("INSERT INTO utilisateurs(id_role_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, pseudo_utilisateur, mdp_utilisateur) VALUES(2,?, ?, ?, ?, ?)");
+                                $insertmbr = $db->prepare("INSERT INTO utilisateurs(id_role_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, pseudo_utilisateur, mdp_utilisateur, img_utilisateur) VALUES(2,?, ?, ?, ?, ?, '')");
+
                                 $insertmbr->execute(array($nom, $prenom, $mail, $pseudo, $mdp));
 
+                                var_dump($insertmbr);
 
                                 if (isset($_SESSION['id']))
-
                                 {
-
                                     if (!empty($_SESSION['id']))
                                      {
                                        $erreur = "Vous ne pouvez pas creer un compte si vous etes deja connecté";
@@ -45,16 +43,11 @@ if(isset($_POST['form_inscription'])) {
                                     else
                                     {
                                         header("location: profil.php?id=" .$_SESSION['id']);
+
                                         /* probleme ici - si je ne suis pas deconectée avant, ça me renvoie sur le compte ou j'étais avant de creer le profil, logique ! il faut revoir cette ligne) . c'est resolu je laisse le com pour le journal de bord */
 
-
                                     }
-
                                 }
-
-
-
-
                             } else {
                                 $erreur = "Vos mots de passes ne correspondent pas !";
                             }
@@ -79,20 +72,17 @@ if(isset($_POST['form_inscription'])) {
         $erreur = "Tous les champs doivent être complétés !";
     }
 }
-
-
 ?>
 <div class="container">
     <div class="row">
         <h1>Inscrivez-vous !</h1>
         <div class="col-md-6">
 
-            <form method="POST" id="form_inscription">
+            <form method="POST" id="form_inscription" action="">
 
                 <div class="form-group">
                     <label for="nom_utilisateur">Nom :</label>
-                    <input type="text" class="form-control" placeholder="Votre Nom" name="nom_utilisateur" id="nom_utilisateur" value="<?php if(isset($nom)){
-                        echo $nom;
+                    <input type="text" class="form-control" placeholder="Votre Nom" name="nom_utilisateur" id="nom_utilisateur" value="<?php if(isset($nom)){ echo $nom;
                     } ?>" />
                 </div>
                 <div class="form-group">

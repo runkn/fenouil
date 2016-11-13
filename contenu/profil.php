@@ -1,13 +1,20 @@
 <?php
+session_start();
 include '../inc/header.php';
-echo '<pre>';
+/*echo '<pre>';
 var_dump($_SESSION);
-echo '</pre>';
+echo '</pre>';*/
 
 if(empty($_SESSION['id']))
 {
     header('location:../index.php');
 }
+
+
+    var_dump($_SESSION['pseudo']);
+
+
+
 
 ?>
 
@@ -15,7 +22,8 @@ if(empty($_SESSION['id']))
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1>Bonjour <br><?= $_SESSION['pseudo']?></h1>
+            <h1>Bonjour <?= $_SESSION['pseudo']; ?>
+                <br> </h1>
             PROUT
         </div>
 
