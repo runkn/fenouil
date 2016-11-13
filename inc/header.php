@@ -1,7 +1,13 @@
 <?php
 
+$db = new PDO('mysql:host=localhost;dbname=fenouil', 'root', 'Johanna');
 
-include 'config.php';
+if(isset($_SESSION['id'])) {
+
+$requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+$requser->execute(array($_SESSION['id']));
+$user = $requser->fetch();
+
 
 ?>
 
@@ -16,8 +22,6 @@ include 'config.php';
         <!-- css -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
 
 
     </head>
@@ -38,7 +42,7 @@ include 'config.php';
                 {
                     if (!empty($_SESSION['id']))
                     {
-                        echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '.$_SESSION['pseudo'].'</span></a></li>';
+                        echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '.$user['pseudo_utilisateur'].'</span></a></li>';
                         echo '<li><a href=../contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
 
                     }
@@ -58,3 +62,4 @@ include 'config.php';
         </div>
     </nav>
     <body>
+    <?php } ?>
