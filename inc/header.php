@@ -1,6 +1,6 @@
 <?php
 
-$db = new PDO('mysql:host=localhost;dbname=fenouil', 'root', 'Johanna');
+include 'config.php';
 
 if(isset($_SESSION['id'])) {
 
