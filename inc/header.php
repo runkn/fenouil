@@ -4,11 +4,11 @@ include 'config.php';
 
 if(isset($_SESSION['id'])) {
 
-$requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
-$requser->execute(array($_SESSION['id']));
-$user = $requser->fetch();
+    $requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+    $requser->execute(array($_SESSION['id']));
+    $user = $requser->fetch();
 
-
+}
 ?>
 <DOCTYPE html>
     <html>
@@ -62,4 +62,3 @@ $user = $requser->fetch();
         </div>
     </nav>
     <body>
-    <?php } ?>
