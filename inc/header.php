@@ -57,3 +57,4 @@ include 'config.php';
             </ul>
         </div>
     </nav>
+    <body>
