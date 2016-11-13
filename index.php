@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'inc/config.php';
+?>
 <DOCTYPE html>
     <html>
     <html lang="fr">
@@ -14,20 +18,24 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php">Miam</a>
+                <a class="navbar-brand" href="index.php">Miam</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../index.php">Accueil</a></li>
-                <li class="active"><a href="../contenu/sucre.php">Sucré</a></li>
-                <li class="active"><a href="../contenu/sale.php">Salé</a></li>
+                <li class="active"><a href="index.php">Accueil</a></li>
+                <li class="active"><a href="contenu/sucre.php">Sucré</a></li>
+                <li class="active"><a href="contenu/sale.php">Salé</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if (isset($_SESSION['id']))
                 {
+                    $requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+                    $requser->execute(array($_SESSION['id']));
+                    $user = $requser->fetch();
+
                     if (!empty($_SESSION['id']))
                     {
-                        echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '.$_SESSION['pseudo'].'</span></a></li>';
+                        echo  '<li><a href="contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '.$user['pseudo_utilisateur'].'</span></a></li>';
                         echo '<li><a href=../contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
 
                     }
@@ -51,6 +59,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Bienvenue sur l'accueil !</h1><br>
+                <h4> Articles à mettre !</h4>
             </div>
         </div>
     </div>
