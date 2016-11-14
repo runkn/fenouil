@@ -1,27 +1,26 @@
 <?php
-session_start();
+
 include '../inc/header.php';
-$bdd = new PDO('mysql:host=localhost;dbname=fenouil', 'root', 'Johanna');
 
 if(isset($_SESSION['id']))
 {
-    $requser = $bdd->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
+    $requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
     $requser->execute(array($_SESSION['id']));
     $user = $requser->fetch();
 
-    if(isset($_POST['newpseudo']) AND !empty($_POST['newpseudo']) AND $_POST['newpseudo'] != $user['pseudo'])
+    if(isset($_POST['newpseudo']) AND !empty($_POST['newpseudo']) AND $_POST['newpseudo'] != $user['pseudo_utilisateur'])
     {
 
         $newpseudo = htmlspecialchars($_POST['newpseudo']);
-        $insertpseudo = $bdd->prepare("UPDATE utilisateurs SET pseudo_utilisateur = ? WHERE id_utilisateur = ?");
+        $insertpseudo = $db->prepare("UPDATE utilisateurs SET pseudo_utilisateur = ? WHERE id_utilisateur = ?");
         $insertpseudo->execute(array($newpseudo, $_SESSION['id']));
         header("Location: profil.php?id=" .$_SESSION['id']);
     }
-    if(isset($_POST['newmail']) AND !empty($_POST['newmail']) AND $_POST['newmail'] != $user['mail'])
+    if(isset($_POST['newmail']) AND !empty($_POST['newmail']) AND $_POST['newmail'] != $user['email_utilisateur'])
     {
 
         $newmail = htmlspecialchars($_POST['newmail']);
-        $insertmail = $bdd->prepare("UPDATE utilisateurs SET email_utilisateur = ? WHERE id_utilisateur = ?");
+        $insertmail = $db->prepare("UPDATE utilisateurs SET email_utilisateur = ? WHERE id_utilisateur = ?");
         $insertmail->execute(array($newmail, $_SESSION['id']));
         /*header("Location: profil.php?id=" .$_SESSION['id']);*/
     }
@@ -35,7 +34,7 @@ if(isset($_SESSION['id']))
         if($mdp1 == $mdp2)
         {
 
-            $insertmdp = $bdd->prepare("UPDATE utilisateurs SET mdp_utilisateur = ? WHERE id_utilisateur = ?");
+            $insertmdp = $db->prepare("UPDATE utilisateurs SET mdp_utilisateur = ? WHERE id_utilisateur = ?");
             $insertmdp->execute(array($mdp1, $_SESSION['id']));
             /*header("Location: profil.php?id=" . $_SESSION['id']);*/
         }
@@ -45,7 +44,7 @@ if(isset($_SESSION['id']))
         }
     }
 
-    if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo']) {
+    if(isset($_POST['newpseudo']) AND $_POST['newpseudo'] == $user['pseudo_utilisateur']) {
 
         /*header("Location: profil.php?id=" . $_SESSION['id']);*/
     }

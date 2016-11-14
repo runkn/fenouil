@@ -42,8 +42,8 @@ if(isset($_SESSION['id'])) {
                 {
                     if (!empty($_SESSION['id']))
                     {
-                        echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '. $user['pseudo_utilisateur'].'</span></a></li>';
-                        echo '<li><a href=../contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
+                        echo  '<li><a href="/fenouil/contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '. $user['pseudo_utilisateur'].'</span></a></li>';
+                        echo '<li><a href=/fenouil/contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
 
                     }
                     else
