@@ -79,7 +79,7 @@
                 if ($userexist == 1) {
                     $userinfo = $requser->fetch();
                     $_SESSION['id'] = $userinfo['id_utilisateur'];
-                    $_SESSION['type'] = $userinfo['id_role_utilisateur'];
+                    $_SESSION['role'] = $userinfo['id_role_utilisateur'];
                     $_SESSION['pseudo'] = $userinfo['pseudo_utilisateur'];
                     $_SESSION['mdp'] = $userinfo['mdp_utilisateur'];
 
