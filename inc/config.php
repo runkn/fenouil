@@ -3,11 +3,11 @@
 //On créer les variables pour la connexion
 $host = 'localhost';
 $username = 'root';
-$password = 'Johanna';
+$password = 'root';
 
 
 try {
-    $db = new PDO("mysql:host=$host;dbname=fenouil", $username, $password);
+    $db = new PDO("mysql:host=$host;dbname=grostest", $username, $password);
     // set the PDO error mode to exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //Rajout de cette putain de ligne qui m'a bien saoulé ! pour afficher les caractères !!

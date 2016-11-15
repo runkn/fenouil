@@ -3,60 +3,75 @@
 include 'inc/header.php';
 
 ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Bienvenue sur l'accueil !</h1><br>
-                <h4> Articles à mettre !</h4>
-                <p> Barre de recherche :</p>
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Bienvenue sur l'accueil !</h1><br>
+            <h4> Articles à mettre !</h4>
+            <p> Barre de recherche :</p>
 
-                <!-- Barre de recherche en PHP -->
+            <!-- Barre de recherche en PHP -->
+            <?php
+
+
+            if(isset($_GET['q']) AND !empty($_GET['q'])) {
+                $q = htmlspecialchars($_GET['q']);
+                $art = $db->query('SELECT * FROM articles WHERE titre_article LIKE "%'.$q.'%" ORDER BY id_article DESC');
+
+                if($art->rowCount() > 0){
+                    $a=$art->fetch();
+                    var_dump($a);
+                    ?>
+
+                    <li><a href="contenu/recette.php?id="<?php $a['id_article']?>><?= $a['titre_article'] ?></a></li>
+
                 <?php
+                }
+                else
 
-                $art = $db->query('SELECT titre_article FROM articles ORDER BY id_article DESC');
+                {
+                    if (isset($q))
+                    {
+                        $erreur = "Aucun résultat pour ".$q;
 
-                if(isset($_GET['q']) AND !empty($_GET['q'])) {
-                    $q = htmlspecialchars($_GET['q']);
-                    $art = $db->query('SELECT * FROM articles WHERE titre_article LIKE "%'.$q.'%" ORDER BY id_article DESC');
-
+                    }
+                    if (isset($erreur))
+                    {
+                        echo $erreur;
+                    }
 
                 }
 
+                }
                 ?>
 
-                <!-- Barre de recherche en PHP -->
-                <form method="get">
-
-                    <input type="search" name="q" placeholder="Recherche..."/>
-                    <input type="submit" value="valider"/>
 
 
-                </form>
+            <!-- Barre de recherche en PHP -->
+            <form method="get">
 
-                <?php if($art->rowCount() > 0) { ?>
+                <input type="search" name="q" placeholder="Recherche..."/>
+                <input type="submit" value="valider"/>
 
-                <ul>
-                    <?php while($a = $art->fetch()) { ?>
-                        <li><?= $a['titre_article'] ?></li>
-                    <?php } ?>
-                    <?php } else { ?>
-                        <h3> Aucun résultat pour "<?= $q ?>"</h3>
-                    <?php } ?>
 
-                    <?php
+            </form>
 
-                    while($a = $art->fetch()) { ?>
 
-                        <li><?= $a['titre_article'] ?></li>
+            <ul>
 
-                    <?php } ?>
 
-                </ul>
 
-            </div>
+
+
+
+
+
+            </ul>
+
         </div>
     </div>
-    </body>
+</div>
+</body>
 
 
 
