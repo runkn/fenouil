@@ -7,7 +7,6 @@ include 'inc/header.php';
     <div class="row">
         <div class="col-md-6">
             <h1>Bienvenue sur l'accueil !</h1><br>
-            <h4> Articles à mettre !</h4>
             <p> Barre de recherche :</p>
 
             <!-- Barre de recherche en PHP -->
