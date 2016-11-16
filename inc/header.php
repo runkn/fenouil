@@ -1,13 +1,10 @@
 <?php
 session_start();
 include 'config.php';
-
 if(isset($_SESSION['id'])) {
-
     $requser = $db->prepare("SELECT * FROM utilisateurs WHERE id_utilisateur = ?");
     $requser->execute(array($_SESSION['id']));
     $user = $requser->fetch();
-
 }
 ?>
 <DOCTYPE html>
@@ -44,11 +41,10 @@ if(isset($_SESSION['id'])) {
                     {
                         echo  '<li><a href="../contenu/profil.php"><span class="glyphicon glyphicon-user">Bienvenue '. $user['pseudo_utilisateur'].'</span></a></li>';
                         echo '<li><a href=../contenu/deconnexion.php><span class="glyphicon glyphicon-log-out">Se deconnecter</span></a></li>';
-
                     }
                     else
                     {
-/*                        echo '<li><a href="../contenu/connexion.php"><span class="glyphicon glyphicon-user">Se connecter</span></a></li>';*/
+                        /*                        echo '<li><a href="../contenu/connexion.php"><span class="glyphicon glyphicon-user">Se connecter</span></a></li>';*/
                     }
                 }
                 else
@@ -56,7 +52,6 @@ if(isset($_SESSION['id'])) {
                     echo '<li><a href=../contenu/connexion.php><span class="glyphicon glyphicon-log-in">Se connecter</span></a></li>';
                     echo '<li><a href=../contenu/inscription.php><span class="glyphicon glyphicon-tree-conifer">S\'inscrire</span></a></li>';
                 }
-
                 ?>
             </ul>
         </div>

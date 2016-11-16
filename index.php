@@ -3,7 +3,7 @@
 include 'inc/header.php';
 
 ?>
-<div class="container" xmlns="http://www.w3.org/1999/html">
+<div class="container">
     <div class="row">
         <div class="col-md-6">
             <h1>Bienvenue sur l'accueil !</h1><br>
@@ -14,15 +14,16 @@ include 'inc/header.php';
 
 
             if(isset($_GET['q']) AND !empty($_GET['q'])) {
+                var_dump($_GET['q']);
                 $q = htmlspecialchars($_GET['q']);
+
                 $art = $db->query('SELECT * FROM articles WHERE titre_article LIKE "%'.$q.'%" ORDER BY id_article DESC');
 
                 if($art->rowCount() > 0){
                     $a=$art->fetch();
-                    var_dump($a);
                     ?>
 
-                    <li><a href="contenu/recette.php?id="<?php $a['id_article']?>><?= $a['titre_article'] ?></a></li>
+                    <li><a href="contenu/recette.php?id=<?=$a['id_article']?>"><?= $a['titre_article'] ?></a></li>
 
                 <?php
                 }
@@ -55,22 +56,13 @@ include 'inc/header.php';
 
             </form>
 
-
-            <ul>
-
-
-
-
-
-
-
-
-            </ul>
-
         </div>
     </div>
 </div>
-</body>
+
+
+<?php
+include 'inc/footer.php';
 
 
 
