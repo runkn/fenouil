@@ -1,6 +1,5 @@
 <?php
 include ('../inc/header.php');
-var_dump($_SESSION);
 
 if (isset($_SESSION))
 {
@@ -24,9 +23,19 @@ if (isset($_SESSION))
             <div class="row">
                 <div class="col-md-6">
                 </div>
-                <a href="deconnexion.php" >Se deco</a>
-                <a href="edition_p.php" >Modif profil</a>
+                <a href="deconnexion.php">Se deco</a>
+                <a href="edition_p.php">Modif profil</a>
+                <a href="membres.php">gestion membres</a>
+                <a href="gestion_a.php">gestion articles</a>
+                <a href="n_article.php">ecrire un nouvel article</a>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+          
+                </div>
+            </div>
+
         </div>
         <?php
     }
