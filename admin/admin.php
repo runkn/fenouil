@@ -17,21 +17,41 @@ if (isset($_SESSION))
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Coucou admin <?= $user['pseudo_utilisateur']?></h1>
+                    <h1>Compte Administrateur de : <?= $user['pseudo_utilisateur']?></h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                </div>
-                <a href="deconnexion.php">Se deco</a>
-                <a href="edition_p.php">Modif profil</a>
-                <a href="membres.php">gestion membres</a>
-                <a href="gestion_a.php">gestion articles</a>
-                <a href="n_article.php">ecrire un nouvel article</a>
-            </div>
+                        <br/>
+                        <?php
+                        $req = $db->query('SELECT img_utilisateur from utilisateurs WHERE id_utilisateur = ' . $_SESSION['id'] . ' ');
+                        while ($row = $req->fetch()) { ?>
 
-            <div class="row">
+                            <!-- J'ai créer un dossier membres a la racine de fenouil et dedans j'ai créer un dossier nommée avatar !" -->
+                            <!-- Les photos seront nommés par l'ID de la personne! -->
+
+                            <img class="img-circle" src="../membres/avatar/<?= $row['img_utilisateur']; ?>" width="200px"
+                                 height="200px" class="img-responsive"/>
+
+
+                            <?php
+                        }
+                        ?>
+                    </div>
                 <div class="col-md-6">
+                </div>
+                <br>
+                <a href="deconnexion.php">Se deco</a> <br>
+                <a href="edition_p.php">Modif profil</a> <br>
+                <a href="membres.php">Gestion membres</a> <br>
+                <a href="gestion_a.php">Gestion articles</a> <br>
+                <a href="n_article.php">Ecrire un nouvel article</a> <br>
+                <!-- Pense à changer l'URL en dessous !! -->
+                <a href="/fenouil/contenu/edition_p.php">Modifier Info's perso</a>
+            </div>
+            <div class="row">
+
+
           
                 </div>
             </div>
