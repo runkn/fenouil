@@ -9,6 +9,10 @@ if (isset($_SESSION['id']))
 
 }
 
+if ($_SESSION['role'] == 1 ){
+    header('location: ../admin/admin.php');
+}
+
 /*var_dump($_SESSION);*/
 
 if(empty($_SESSION['id']))
