@@ -7,13 +7,12 @@ $password = 'root';
 
 
 try {
-    $db = new PDO("mysql:host=$host;dbname=grostest", $username, $password);
+    $db = new PDO("mysql:host=$host;dbname=fenouil", $username, $password);
     // set the PDO error mode to exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //Rajout de cette putain de ligne qui m'a bien saoulé ! pour afficher les caractères !!
     $db->exec("SET CHARACTER SET utf8");
 
-    echo "Connexion effectuée";
 }
 catch(PDOException $e)
     {

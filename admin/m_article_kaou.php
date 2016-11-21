@@ -8,7 +8,7 @@ if ($_SESSION['role'] != 1)
 }
 
 
-if (isset($_POST['marticle']) AND isset($_FILES['image']) AND !empty($_POST['marticle'])) {
+if (isset($_POST['marticle']) AND !empty($_POST['marticle'])){
 
 
     $id2 = $_GET['id'];
@@ -17,67 +17,36 @@ if (isset($_POST['marticle']) AND isset($_FILES['image']) AND !empty($_POST['mar
     $date = $_POST['date'];
     $idcat = $_POST['categorie'];
 
+    echo $idcat;
+    $update = $db->prepare('UPDATE articles SET id_categorie_article = ?, titre_article = ?, txt_article = ?, date_article = ? WHERE id_article = ?');
+
+    
+
+    $update->execute(array($idcat, $titre, $texte, $date, $id2));
+
+    header('location:admin.php');
+}
+if (isset($_GET['id']) and !empty($_GET['id'])) {
 
 
-        $update = $db->prepare('UPDATE articles SET id_categorie_article = ?, titre_article = ?, txt_article = ?, date_article = ? WHERE id_article = ?');
+    $requetearticle = $db->prepare('SELECT * from articles where id_article = ?');
+    $idarticle = htmlspecialchars($_GET['id']);
+    $requetearticle->execute(array($idarticle));
 
-        $update->execute(array($idcat, $titre, $texte, $date, $id2));
-        var_dump($update);
+    while($row = $requetearticle->fetch()){
+        $titre2=$row['titre_article'];
+        $contenu2=$row['txt_article'];
+        $date2=$row['date_article'];
+
+    }
+
+
+
+
 
 }
 
-
-    if (isset($_GET['id']) and !empty($_GET['id'])) {
-
-
-        $requetearticle = $db->prepare('SELECT * from articles where id_article = ?');
-        $idarticle = htmlspecialchars($_GET['id']);
-        $requetearticle->execute(array($idarticle));
-
-        while($row = $requetearticle->fetch()){
-            $titre2=$row['titre_article'];
-            $contenu2=$row['txt_article'];
-            $date2=$row['date_article'];
-
-        }
-    }
-
-if(isset($_FILES['image']) AND !empty($_FILES['image']['name'])) {
-    $tailleMax = 2097152;
-    $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
-    if($_FILES['image']['size'] <= $tailleMax) {
-        $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1));
-        if(in_array($extensionUpload, $extensionsValides)) {
-
-
-            $img = $_FILES['image']['name'];
-
-            $chemin = "../admin/images/$img";
-
-            $resultat = move_uploaded_file($_FILES['image']['tmp_name'],$chemin);
-
-            if(isset($resultat))
-
-            {
-                $idart = $_GET['id'];
-                $img = $_FILES['image']['name'];
-                $updateavatar = $db->prepare('UPDATE articles SET img_article = ? WHERE id_article = ?');
-                $updateavatar->execute(array($img, $idart));
-
-            }
-
-            else {
-                $msg = "Erreur durant l'importation de votre photo de profil";
-            }
-        } else {
-            $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
-        }
-    } else {
-        $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
-    }
-}
-
-    ?>
+?>
 
 
     <div class="container">
@@ -129,8 +98,7 @@ if(isset($_FILES['image']) AND !empty($_FILES['image']['name'])) {
 
 
                         <div class="form-group">
-                            <label>Image</label>
-                            <input type="file" id="image" name="image" value="">
+                            <input type="file">
                         </div>
 
                         <div class="form-group">
@@ -149,7 +117,7 @@ if(isset($_FILES['image']) AND !empty($_FILES['image']['name'])) {
 
 
 
-    <?php
+<?php
 
 
 
@@ -158,4 +126,4 @@ if(isset($_FILES['image']) AND !empty($_FILES['image']['name'])) {
 
 
 
-    ?>
+?>

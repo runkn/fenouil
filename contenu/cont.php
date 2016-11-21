@@ -1,49 +1,56 @@
 <?php
-include '../inc/header.php';
+include "../inc/header.php";
 
 
-$recettes = $db->query('SELECT * from categories WHERE cat ="sale"');
+$catid = $_GET['cat'];
 
-$sdf= $db->query('SELECT * FROM categories INNER JOIN articles on categories.id_categorie = articles.id_categorie_article WHERE cat = "sale"');
+$reqa = $db->prepare('SELECT * from articles INNER JOIN categories on articles.id_categorie_article = categories.id_categorie WHERE id_categorie = ?');
+$reqa->execute(array($catid));
 
+$row=$reqa->fetch();
 
 
 
 ?>
 
+
+
+
 <div id="wrap">
 
-<div class="container">
-    <div class="row">
 
-        <div class="page-header">
-            <h1 style="text-align: center;">Nos catégories salées <span class="glyphicon glyphicon-shopping-cart"></span></h1><br>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="page-header">
+                <h1 style="text-align: center;">Nos <?= $row['nom_categorie'] ?> <span class="glyphicon glyphicon-shopping-cart"></span></h1><br>
+            </div>
         </div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-8">
 
 
-            <?php while ($row=$recettes->fetch()) { ?>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="thumbnail">
-                        <a href = "#">
-                            <img class="" src="http://lorempixel.com/350/251" alt="...">
-                        </a>
-                        <div class="caption">
-                            <h3><?=ucfirst($row['nom_categorie'])?></h3>
-                            <p>Contenu </p>
-                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>">ICI !</a>
+        <div class="row">
+
+            <div class="col-md-8">
+
+
+                <?php while ($row=$reqa->fetch()) { ?>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="thumbnail">
+                            <a href = "#">
+                                <img class="" src="http://lorempixel.com/350/251" alt="...">
+                            </a>
+                            <div class="caption">
+                                <h3><?=ucfirst($row['titre_article'])?></h3>
+                                <p>Contenu </p>
+                                <a href="/contenu/recette.php?id=<?=$row['id_article']?>">ICI !</a>                        </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
 
             </div>
 
-        <div class="col-md-4 col-lg-4">
-
+            <div class="col-md-4 col-lg-4">
 
                 <div class="well">
                     <h4>Rechercher</h4>
@@ -129,10 +136,3 @@ $sdf= $db->query('SELECT * FROM categories INNER JOIN articles on categories.id_
         </div>
     </div>
 </div>
-
-   
-
-
-<?php
-include '../inc/footer.php';
-?>

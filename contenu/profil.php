@@ -25,41 +25,44 @@ else
 
 {
     ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Bonjour <br><?= $user['pseudo_utilisateur']?></h1>
-                PROUT
+
+        <div class="container">
+
+
+            <div class="page-header">
+                <h1>Bienvenue <?= ucfirst($user['pseudo_utilisateur'])?><span class="glyphicon glyphicon-grain"></span></h1><br>
             </div>
 
-            <a href="deconnexion.php" >Se deco</a>
-            <a href="edition_p.php" >Modif profil</a>
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-
-
-                <?php
-
-                $req = $db->query('SELECT img_utilisateur from utilisateurs WHERE id_utilisateur = ' . $_SESSION['id'] . ' ');
-
-                while ($row = $req->fetch()) { ?>
-
-                    <!-- J'ai créer un dossier membres a la racine de fenouil et dedans j'ai créer un dossier nommée avatar !" -->
-                    <!-- Les photos seront nommés par l'ID de la personne! -->
-
-                    <img class="img-circle" src="../membres/avatar/<?= $row['img_utilisateur']; ?>" width="200px"
-                         height="200px" class="img-responsive"/>
-
-
+            <div class="row">
+                <div class="col-md-3">
                     <?php
-                }
-                ?>
+                    $req = $db->query('SELECT * from utilisateurs WHERE id_utilisateur = ' . $_SESSION['id'] . ' ');
 
 
+                    $row = $req->fetch();
+                    ?><img class="img-circle" src="../membres/avatar/<?= $row['img_utilisateur']; ?>" width="200px"
+                           height="200px" class="img-responsive"/>
+
+                </div>
+
+                <div class="col-md-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Vos infos profil:</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Pseudo: <?= $row['pseudo_utilisateur']?></p>
+                            <p>Nom: <?= $row['nom_utilisateur']?></p>
+                            <p>Prenom: <?= $row['prenom_utilisateur']?></p>
+                            <p>Email: <?= $row['email_utilisateur']?></p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
         </div>
+
 
     <?php
 

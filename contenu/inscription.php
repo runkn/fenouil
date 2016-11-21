@@ -38,6 +38,7 @@ if (!empty($_SESSION['id'])){
                                     $_SESSION['id'] = $lastid;
                                     $_SESSION['pseudo'] = $pseudo;
                                     $_SESSION['mdp'] = $mdp;
+                                    $_SESSION['role'] = 2;
 
                                     header("location:../contenu/profil.php?id=" . $_SESSION['id']);
 
