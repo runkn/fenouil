@@ -68,3 +68,7 @@ else
 
 }
 ?>
+
+<?php
+include '../inc/footer.php';
+?>

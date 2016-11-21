@@ -70,3 +70,7 @@ if (isset($_SESSION))
     }
 }
 ?>
+
+<?php
+include '../inc/footer.php';
+?>
