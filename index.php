@@ -64,7 +64,7 @@ if (isset($_GET['oh'])) {?>
                                     <div class="caption">
                                         <p class="limit"><?=$row['titre_article'] ?></p>
                                         <p class="limit"><?=$row['date_article']?></p>
-                                        <p class="limit"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                  
                                     </div>
                                 </div>
                             </div>
