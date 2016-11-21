@@ -145,7 +145,7 @@ if (isset($_POST['form'])) {
             </div>
         </div>
     </div>
-</body>
+
 
 <?php include '../inc/footer.php'; ?>
 

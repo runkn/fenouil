@@ -53,6 +53,7 @@ if (isset($_SESSION))
                         <a href="membres.php" class="list-group-item">Gestion membres</a>
                         <a href="gestion_a.php" class="list-group-item">Gestion articles</a>
                         <a href="gestion_b.php" class="list-group-item">Gestion brouillons</a>
+                        <a href="n_cat.php" class="list-group-item">Creer une nouvelle catégorie</a>
                         <a href="n_article.php" class="list-group-item">Ecrire un nouvel article</a>
                         <a href="../contenu/edition_p.php" class="list-group-item">Modifier ses infos personnelles</a>
                     </div>

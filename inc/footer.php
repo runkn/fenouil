@@ -1,6 +1,6 @@
-<div class="container-fluid" id="footer">
+<div class="container-fluid" id="footerpa">
 
-    <div class="row">
+    <div class="row" id="footer">
         <div class="col-md-5">
             <p id="pfooter">Copyleft &copy; - Tous droits reservés</p>
         </div>

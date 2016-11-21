@@ -57,7 +57,12 @@ if(isset($_SESSION['id'])) {
         #footer {
             height: 60px;
             background-color: #eee;
+            bottom: 0;
         }
+        
+        
+
+     
 
         .news-pic{
             float: right;
