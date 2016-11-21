@@ -99,31 +99,29 @@ $qsd = $db->query('SELECT * from categories INNER JOIN articles on categories.id
                 <p class="news-content">Mauris viverra et lacus id scelerisque. Vivamus fermentum porta maximus. Curabitur mattis vehicula fermentum. Sed sed sodales purus.</p>
             </div>
 
-            <div class="well">
-                <h4>Les catégories: </h4>
-                <div class="row">
-                    <div class="col-lg-6">
-
-                        <ul class="list-group">
-                            <?php
-                            $categories = $db->query('SELECT * from categories');
-                            while  ($categorie = $categories->fetch())
-
-                            {
-                                $nomcat= $categorie['nom_categorie'];
-
-                                ?>
-                                <li class="list-group-item"><a href="<?= $nomcat?>.php"><?= ucfirst($nomcat)?></a>
-                                </li>
-                                <?php
-                            }
-                            ?>
-
-                        </ul>
-                    </div>
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">Les catégories</h4>
                 </div>
-                <!-- /.row -->
+                <div class="panel-body text-center" style="display: none">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-unstyled">
+                                <?php
+                                $categories = $db->query('SELECT * from categories');
+                                while  ($categorie = $categories->fetch())
+                                {
+                                    $nomcat= $categorie['nom_categorie'];
+                                    ?>
+                                    <li><a href="contenu/cont.php?cat=<?=$categorie['id_categorie']?>"><?= ucfirst($nomcat)?></a>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -133,5 +131,20 @@ $qsd = $db->query('SELECT * from categories INNER JOIN articles on categories.id
 
 
 
-
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            var div = $("h4");
+            div.animate({left: '20px'}, "slow");
+            div.animate({fontSize: '3em'}, "slow");
+        });
+    });
+    $(document).ready(function(){
+        $(".panel-heading").click(function(){
+            $(".panel-body").animate({
+                height: 'toggle'
+            });
+        });
+    });
+</script>
 

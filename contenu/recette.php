@@ -20,6 +20,8 @@ include '../inc/header.php';
         $categorie = $row['nom_categorie'];
 
 
+
+
     } else {
         header('location:../index.php');
     }
@@ -106,7 +108,10 @@ include '../inc/header.php';
 
                 <?php
 
-                $affichercom = $db ->query('SELECT * from commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur_commentaire = utilisateurs.id_utilisateur  ORDER BY id_commentaire DESC LIMIT 5');
+
+
+                $affichercom = $db ->prepare('SELECT * FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur_commentaire = utilisateurs.id_utilisateur WHERE id_article_commentaire LIKE "%'.$x.'%" ORDER BY id_commentaire DESC LIMIT 5');
+                $affichercom->execute(array($x));
 
                 while ($row = $affichercom->fetch()) { 
                     

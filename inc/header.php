@@ -23,14 +23,17 @@ if(isset($_SESSION['id'])) {
 
     <style>
 
-
+        .limit {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
 
         #wrap {
             min-height: 100%;
             height: auto;
-            /* Negative indent footer by its height */
             margin: 0 auto -60px;
-            /* Pad bottom by footer height */
             padding: 0 0 60px;
         }
 

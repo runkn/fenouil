@@ -62,9 +62,9 @@ if (isset($_GET['oh'])) {?>
                                         <img class="" src="contenu/broccoli_d.jpg" alt="...">
                                     </a>
                                     <div class="caption">
-                                        <p><?=$row['titre_article'] ?></p>
-                                        <p><?=$row['date_article']?></p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                                        <p class="limit"><?=$row['titre_article'] ?></p>
+                                        <p class="limit"><?=$row['date_article']?></p>
+                                        <p class="limit"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +156,6 @@ if (isset($_GET['oh'])) {?>
                             </div>
                         </div>
                     </div>
-                <!-- /.row -->
             </div>
             <button align="center">Clique, c'est magique !</button>
 
