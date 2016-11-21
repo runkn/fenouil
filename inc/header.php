@@ -23,6 +23,22 @@ if(isset($_SESSION['id'])) {
 
     <style>
 
+
+        a {
+            text-decoration: none;
+        }
+        
+        #pfooter {
+            line-height: 60px;
+        }
+      
+
+        #ifooter {
+            line-height: 60px;
+            display: inline-block;
+            margin-left: 20px;
+        }
+
         .limit {
             white-space: nowrap;
             overflow: hidden;
@@ -40,7 +56,7 @@ if(isset($_SESSION['id'])) {
 
         #footer {
             height: 60px;
-            background-color: palevioletred;
+            background-color: #eee;
         }
 
         .news-pic{

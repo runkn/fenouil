@@ -1,10 +1,16 @@
-<div class="container-fluid">
+<div class="container-fluid" id="footer">
 
     <div class="row">
-        <div class="col-md-offset-4 col-md-6">
-            <a href="http://facebook.com" <i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="http://facebook.com" <i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="http://facebook.com" <i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <div class="col-md-5">
+            <p id="pfooter">Copyleft &copy; - Tous droits reservés</p>
+        </div>
+        <div class="col-md-3" id="cicon">
+            <a id="ifooter" href="http://facebook.com" <i class="fa fa-facebook fa-3x" aria-hidden="true"></i></a>
+            <a id="ifooter" href="http://youtube.com" <i class="fa fa-youtube fa-3x" aria-hidden="true"></i></a>
+            <a id="ifooter" href="http://instagram.com" <i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a>
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+            <p id="pfooter">Bon appetit !</p>
         </div>
 
     </div>
