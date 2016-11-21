@@ -59,7 +59,7 @@ if (isset($_GET['oh'])) {?>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="thumbnail">
                                     <a href = "contenu/recette.php?id=<?=$row['id_article']?>">
-                                        <img class="" src="contenu/broccoli_d.jpg" alt="...">
+                                        <img class="" src="http://lorempixel.com/200/200/food/" alt="...">
                                     </a>
                                     <div class="caption">
                                         <p class="limit"><?=$row['titre_article'] ?></p>

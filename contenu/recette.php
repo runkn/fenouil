@@ -55,11 +55,11 @@ include '../inc/header.php';
 
 
                 <!-- Preview Image -->
-                <img class="img-responsive" value="<?= $x ?>" src="../admin/images/<?= $img ?>">
+<!--                <img class="img-responsive" value="<?/*= $x */?>" src="../admin/images/<?/*= $img */?>">
+-->
+                <img class="img-responsive" src="http://lorempixel.com/500/500/food" style="margin: 0 auto"><br>
 
-
-
-                <p><?=$article?></p>
+                <p style="text-align: justify; font-size: 18px"><?=$article?></p>
 
                 <hr>
 
@@ -199,7 +199,7 @@ include '../inc/header.php';
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
                                 <?php
-                                $categories = $db->query('SELECT * from categories');
+                                $categories = $db->query('SELECT * from categories LIMIT 5');
                                 while  ($categorie = $categories->fetch())
 
                                 {

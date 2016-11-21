@@ -32,7 +32,7 @@ $sdf= $db->query('SELECT * FROM categories INNER JOIN articles on categories.id_
                         </a>
                         <div class="caption">
                             <h3><?=ucfirst($row['nom_categorie'])?></h3>
-                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>" class="btn btn-info" role="button"> Ok !</a>
+                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>" class="btn btn-info" role="button">Ok !</a>
                         </div>
                     </div>
                 </div>

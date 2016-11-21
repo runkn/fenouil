@@ -37,7 +37,7 @@ $rowt=$qsd->fetch();
                         </a>
                         <div class="caption">
                             <h3><?=ucfirst($row['nom_categorie'])?></h3>
-                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>&ncat=<?=$row['nom_categorie']?>" class="btn btn-info" role="button">Ok </a>                        </div>
+                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>" class="btn btn-info" role="button">Ok </a>                        </div>
                     </div>
                 </div>
             <?php } ?>

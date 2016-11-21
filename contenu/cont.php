@@ -1,14 +1,11 @@
 <?php
 include "../inc/header.php";
-
-
 $catid = $_GET['cat'];
-
 $reqa = $db->prepare('SELECT * from articles INNER JOIN categories on articles.id_categorie_article = categories.id_categorie WHERE id_categorie = ?');
 $reqa->execute(array($catid));
 
-$row=$reqa->fetch();
-
+$reqcatt = $db->query("SELECT * from categories where id_categorie = '$catid'");
+$rowcat = $reqcatt->fetch();
 
 
 ?>
@@ -24,7 +21,7 @@ $row=$reqa->fetch();
         <div class="row">
 
             <div class="page-header">
-                <h1 style="text-align: center;">Nos <?= $row['nom_categorie'] ?> <span class="glyphicon glyphicon-shopping-cart"></span></h1><br>
+                <h1 style="text-align: center;">Nos <?= $rowcat['nom_categorie']?> <span class="glyphicon glyphicon-shopping-cart"></span></h1><br>
             </div>
         </div>
 
@@ -69,11 +66,8 @@ $row=$reqa->fetch();
                     <?php
                     if(isset($_GET['q']) AND !empty($_GET['q'])) {
                         $q = htmlspecialchars($_GET['q']);
-
                         $art = $db->query('SELECT * FROM articles WHERE titre_article LIKE "%'.$q.'%" and brouillon_article = 0 ORDER BY id_article DESC LIMIT 5');
-
                         if($art->rowCount() > 0){
-
                             while ($a=$art->fetch()){
                                 ?>
 
@@ -82,20 +76,16 @@ $row=$reqa->fetch();
                                 <?php
                             }}
                         else
-
                         {
                             if (isset($q))
                             {
                                 $erreur = "Aucun résultat pour ".$q;
-
                             }
                             if (isset($erreur))
                             {
                                 echo $erreur;
                             }
-
                         }
-
                     }
                     ?>
                 </div>
