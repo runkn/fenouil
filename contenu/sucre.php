@@ -5,6 +5,7 @@ include '../inc/header.php';
 $recettes = $db->query('SELECT * from categories WHERE cat ="sucre"');
 
 $qsd = $db->query('SELECT * from categories INNER JOIN articles on categories.id_categorie = articles.id_categorie_article WHERE cat = "sucre"');
+$rowt=$qsd->fetch();
 
 
 
@@ -31,13 +32,12 @@ $qsd = $db->query('SELECT * from categories INNER JOIN articles on categories.id
             <?php while ($row=$recettes->fetch()) { ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="thumbnail">
-                        <a href = "#">
+                        <a href = "/contenu/cont.php?cat=<?=$row['id_categorie']?>">
                             <img class="" src="http://lorempixel.com/350/251" alt="...">
                         </a>
                         <div class="caption">
                             <h3><?=ucfirst($row['nom_categorie'])?></h3>
-                            <p>Contenu </p>
-                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>&ncat=<?=$row['nom_categorie']?>">ICI !</a>                        </div>
+                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>&ncat=<?=$row['nom_categorie']?>" class="btn btn-info" role="button">Ok </a>                        </div>
                     </div>
                 </div>
             <?php } ?>
@@ -148,3 +148,7 @@ $qsd = $db->query('SELECT * from categories INNER JOIN articles on categories.id
     });
 </script>
 
+<?php
+include ('../inc/footer.php');
+
+?>

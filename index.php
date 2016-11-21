@@ -4,7 +4,7 @@
 include 'inc/header.php';
 
 
-$reqarticle = $db->query('SELECT * from articles WHERE brouillon_article = 0');
+$reqarticle = $db->query('SELECT * from articles WHERE brouillon_article = 0 ORDER BY id_article DESC LIMIT 9');
 
 
 
@@ -130,7 +130,7 @@ if (isset($_GET['oh'])) {?>
                             <h3>A propos de nous...<span class="glyphicon glyphicon-heart"></span></h3><br>
                         </header>
                     <img class="thumbnail" src="http://lorempixel.com/350/251" width="300px"/>
-                    <p class="news-content">Mauris viverra et lacus id scelerisque. Vivamus fermentum porta maximus. Curabitur mattis vehicula fermentum. Sed sed sodales purus.</p>
+                    <p class="news-content">Le gras c'est la vie, alors bienvenue chez nous ! </p>
                 </div>
 
                 <div class="panel panel-default">

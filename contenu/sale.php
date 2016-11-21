@@ -24,17 +24,15 @@ $sdf= $db->query('SELECT * FROM categories INNER JOIN articles on categories.id_
 
         <div class="col-md-8">
 
-
             <?php while ($row=$recettes->fetch()) { ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="thumbnail">
-                        <a href = "#">
+                        <a href = "/contenu/cont.php?cat=<?=$row['id_categorie']?>">
                             <img class="" src="http://lorempixel.com/350/251" alt="...">
                         </a>
                         <div class="caption">
                             <h3><?=ucfirst($row['nom_categorie'])?></h3>
-                            <p>Contenu </p>
-                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>">ICI !</a>
+                            <a href="/contenu/cont.php?cat=<?=$row['id_categorie']?>" class="btn btn-info" role="button"> Ok !</a>
                         </div>
                     </div>
                 </div>

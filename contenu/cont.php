@@ -37,13 +37,16 @@ $row=$reqa->fetch();
                 <?php while ($row=$reqa->fetch()) { ?>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="thumbnail">
-                            <a href = "#">
+                            <a href = "">
                                 <img class="" src="http://lorempixel.com/350/251" alt="...">
                             </a>
                             <div class="caption">
-                                <h3><?=ucfirst($row['titre_article'])?></h3>
-                                <p>Contenu </p>
-                                <a href="/contenu/recette.php?id=<?=$row['id_article']?>">ICI !</a>                        </div>
+                                <h3 class="limit"><?=ucfirst($row['titre_article'])?></h3>
+                                <a href="/contenu/recette.php?id=<?=$row['id_article']?>" class="btn btn-info" role="button"> Ok </a>
+
+
+
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -105,31 +108,29 @@ $row=$reqa->fetch();
                     <p class="news-content">Mauris viverra et lacus id scelerisque. Vivamus fermentum porta maximus. Curabitur mattis vehicula fermentum. Sed sed sodales purus.</p>
                 </div>
 
-                <div class="well">
-                    <h4>Les catégories: </h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                            <ul class="list-group">
-                                <?php
-                                $categories = $db->query('SELECT * from categories');
-                                while  ($categorie = $categories->fetch())
-
-                                {
-                                    $nomcat= $categorie['nom_categorie'];
-
-                                    ?>
-                                    <li class="list-group-item"><a href="<?= $nomcat?>.php"><?= ucfirst($nomcat)?></a>
-                                    </li>
-                                    <?php
-                                }
-                                ?>
-
-                            </ul>
-                        </div>
-
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="text-center">Les catégories</h4>
                     </div>
-                    <!-- /.row -->
+                    <div class="panel-body text-center" style="display: none">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <?php
+                                    $categories = $db->query('SELECT * from categories');
+                                    while  ($categorie = $categories->fetch())
+                                    {
+                                        $nomcat= $categorie['nom_categorie'];
+                                        ?>
+                                        <li><a href="contenu/cont.php?cat=<?=$categorie['id_categorie']?>"><?= ucfirst($nomcat)?></a>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
